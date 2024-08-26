@@ -20,7 +20,7 @@ The following **required** functionality is completed:
 Here's a walkthrough of implemented features:
 
 <img src='https://i.imgur.com/ehXQAzR.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
-[View my GIF](https://i.imgur.com/yourgifid.gif)
+[View my GIF](https://i.imgur.com/ehXQAzR.gif)
 <!-- Replace this with whatever GIF tool you used! -->
 GIF created with ScreenToGif. 
 <!-- Recommended tools:
