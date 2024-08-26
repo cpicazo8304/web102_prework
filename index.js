@@ -29,7 +29,7 @@ const gamesContainer = document.getElementById("games-container");
 function addGamesToPage(games) {
 
     // loop over each item in the data
-    for(let i = 0; i < length(games); i++){
+    for(let i = 0; i < games.length; i++){
 
         // create a new div element, which will become the game card
         let new_div = document.createElement('div');
@@ -99,7 +99,7 @@ raisedCard.innerHTML = raised_display;
 // grab number of games card and set its inner HTML
 const gamesCard = document.getElementById("num-games");
 
-let num_games = length(GAMES_JSON);
+let num_games = GAMES_JSON.length;
 
 let games_display = `
     <p id="num-games">${num_games}</p>
@@ -171,10 +171,13 @@ let games_unfunded = GAMES_JSON.filter(currentValue =>{
     return currentValue.pledged < currentValue.goal;
 });
 
-let num_games_unfunded = length(games_unfunded);
+let num_games_unfunded = games_unfunded.length;
+let check_if_more_than_one = num_games_unfunded > 1;
 
 // create a string that explains the number of unfunded games using the ternary operator
-let explanation = '';
+let explanation = `A total of $${total_raised.toLocaleString()} has been raised for ${GAMES_JSON.length} games.
+Currently, ${num_games_unfunded} ${num_games_unfunded > 1 ? "games remain" : "game remains"} unfunded. We need your help
+to fund these amazing games!`;
 
 // create a new DOM element containing the template string and append it to the description container
 let new_paragraph = document.createElement('p');
@@ -182,6 +185,10 @@ let new_paragraph = document.createElement('p');
 let paragraph_display = `
     <p>${explanation}</p>
 `;
+
+new_paragraph.innerHTML = paragraph_display;
+
+descriptionContainer.appendChild(new_paragraph);
 /************************************************************************************
  * Challenge 7: Select & display the top 2 games
  * Skills used: spread operator, destructuring, template literals, sort 
@@ -198,7 +205,7 @@ const sortedGames =  GAMES_JSON.sort( (item1, item2) => {
 const [first_game, second_game, ...otherGames] = sortedGames;
 
 // create a new element to hold the name of the top pledge game, then append it to the correct element
-const top_game = createElement('p');
+const top_game = document.createElement('p');
 
 const top_game_display = `
     <p>${first_game.name}</p>
@@ -208,7 +215,7 @@ top_game.innerHTML = top_game_display;
 firstGameContainer.appendChild(top_game);
 
 // do the same for the runner up item
-const second_top_game = createElement('p');
+const second_top_game = document.createElement('p');
 
 const second_top_game_display = `
     <p>${second_game.name}</p>
